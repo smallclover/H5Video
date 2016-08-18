@@ -81,7 +81,7 @@ video {
 	font-size: 20px;
 	color: #FFF;
 	position: absolute;
-	right: 50px;
+	right: 80px;
 	top: 11px;
 }
 .controls .volume:hover{
@@ -137,4 +137,24 @@ video {
 	top: 11px;
 	color: #FFF;
 	font-size: 14px;
+}
+
+/*音乐条*/
+.controls .volumeBar{
+	height: 20px;
+	width: 45px;
+	line-height: 20px;
+	position: absolute;
+	left: 640px;
+	top: 11px;
+}
+
+.controls .volumeBar .volumeInner{
+	display:block;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#ffffff;
+	z-index:10;
 }
