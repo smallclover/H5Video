@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NicoNicoNi~</title>
+    <link rel="stylesheet" href="css/font/font-awesome.css">
+    <link rel="stylesheet" href="css/player/player.css">
+</head>
+<body>
+
+    <figure><!--组合元素-->
+        <figcaption>视频播放器</figcaption>
+        <div id="player" class="player">
+            <video id="video"width="100%px" height="940px">
+                您的浏览器不支持HTML5
+                <source src="niconiconi.mp4"><!--提供默认的播放视频-->
+            </video>
+        </div>
+        <div id="controls" class="controls">
+<!--            <button onclick="playAndPause()">播放/暂停</button>
+            <button onclick="fullScreen()">全屏</button>-->
+            <!-- 播放/暂停 -->
+            <a href="javascript:;" class="switch fa fa-play"></a>
+            <!-- 全屏 -->
+            <a href="javascript:;" class="expand fa fa-expand"></a>
+            <!--进度条-->
+            <div id="progress" class="progress">
+                <div class="loaded"></div>
+                <div class="line"></div>
+                <div class="bar"></div>
+            </div>
+            <!--时间-->
+            <div class="timer">
+                <span class="current">00:00:00</span>/
+                <span class="total">00:00:00</span>
+            </div>
+        </div>
+    </figure>
+<!--    <script type="text/javascript">
+        var video = document.getElementById("video");
+        /**
+         * 播放/暂停
+         */
+        function playAndPause() {
+            if (video.paused){
+                video.play();
+            }else {
+                video.pause();
+            }
+        }
+        /**
+         * 全屏
+         */
+        function fullScreen() {
+            video.webkitRequestFullScreen();//webKit的全屏API，没有做兼容性处理
+        }
+    </script>-->
+</body>
+</html>
