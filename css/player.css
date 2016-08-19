@@ -28,7 +28,11 @@ video {
 	height: 100%;
 	margin: 0 auto;
 }
-
+/**禁止controls**/
+video::-webkit-media-controls-enclosure{
+	/**禁止video标签的control属性只对webkit内核有效**/
+	display: none !important;
+}
 .controls {
 	width: 720px;
 	height: 40px;
@@ -148,10 +152,11 @@ video {
 	left: 640px;
 	top: 11px;
 }
-
+/**音量条**/
 .controls .volumeBar .volumeInner{
 	display:block;
 	height:100%;
+	width:100%;
 	position:absolute;
 	top:0;
 	left:0;
