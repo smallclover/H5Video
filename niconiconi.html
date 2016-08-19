@@ -41,9 +41,12 @@
                     <div class="volumeInner"></div>
                 </div>
             </div>
+
         </div>
     </figure>
-
+    <!--speed-->
+    <input type="button" value="x1" class="btnx1">
+    <input type="button" value="x3" class="btnx3">
     <script type="text/javascript">
         var video = document.querySelector("video");
         var isPlay = document.querySelector(".switch");
@@ -54,6 +57,18 @@
         var totalTime = document.querySelector(".timer > .total");
         var isVolume = document.querySelector(".volume");
 //        var volumeBar = document.querySelector(".volumeBar");
+
+        //speed text clicked
+        $('.btnx1').on('click', function() { fastfowrd(this, 1); });
+        $('.btnx3').on('click', function() { fastfowrd(this, 3); });
+        var fastfowrd = function(obj, spd) {
+  /*          $('.text').removeClass('selected');
+            $(obj).addClass('selected');*/
+            video.playbackRate = spd;
+            video.play();
+        };
+
+
         //当视频可播放的时候
         video.oncanplay = function(){
             //显示视频
@@ -72,17 +87,33 @@
             this.classList.toggle("fa-pause");
         };
 
-        //音量按钮
+        //音量按钮 //bug
         isVolume.onclick = function () {
             if(video.muted){
                 video.muted = false;
                 //toggle存在的删除，不存在则添加
-                this.classList.toggle("fa-volume-off");//删除元素
-                this.classList.toggle("fa-volume-up");//添加元素
+                if (video.volume > 0.5){
+                    this.classList.toggle("fa-volume-off");//删除元素
+                    this.classList.toggle("fa-volume-up");//添加元素
+                }
+
+                if (video.volume < 0.5){
+                    this.classList.toggle("fa-volume-off");//删除元素
+                    this.classList.toggle("fa-volume-down");//添加元素
+                }
+                $('.volumeInner').css('width', video.volume*100+'%');//?bug
             }else {
                 video.muted = true;
-                this.classList.toggle("fa-volume-up");
-                this.classList.toggle("fa-volume-off");
+                if (video.volume > 0.5){
+                    this.classList.toggle("fa-volume-up");//删除元素
+                    this.classList.toggle("fa-volume-off");//添加元素
+                }
+
+                if (video.volume < 0.5){
+                    this.classList.toggle("fa-volume-down");//删除元素
+                    this.classList.toggle("fa-volume-off");//添加元素
+                }
+                $('.volumeInner').css('width',0);
             }
 
         }
@@ -143,7 +174,6 @@
         var video = document.querySelector("video");
         var volumeDrag = false;
         $('.volumeBar').on('mousedown', function(e) {
-            alert("HelloWorld");
             volumeDrag = true;
             video.muted = false;
 //            $('.sound').removeClass('muted');
@@ -185,15 +215,15 @@
             video.volume = percentage / 100;
 
             //change sound icon based on volume
-/*            if(video.volume == 0){
-                $('.sound').removeClass('sound2').addClass('muted');
+            if(video.volume == 0){
+                $('.volume').removeClass('fa-volume-up').removeClass('fa-volume-down').addClass('fa-volume-off');
             }
             else if(video.volume > 0.5){
-                $('.sound').removeClass('muted').addClass('sound2');
+                $('.volume').removeClass('fa-volume-off').removeClass('fa-volume-down').addClass('fa-volume-up');
             }
             else{
-                $('.sound').removeClass('muted').removeClass('sound2');
-            }*/
+                $('.volume').removeClass('fa-volume-off').removeClass('fa-volume-up').addClass('fa-volume-down');
+            }
 
         };
     </script>
